@@ -10,13 +10,11 @@ description: Comprehensive management of GCP resources and Kubernetes. Supports 
 2. [Tool Usage & Routing](#tool-usage--routing)
 3. [Instructions and Constraints](#instructions-and-constraints)
 
-<overview>
+## Overview
 GCP and Kubernetes resources and mutations should use MCP tools. These tools are specialized backend agents. As the client agent, your role is to identify the intent and delegate the entire task verbatim to the appropriate intelligent tool.
 
-**Note:** These tools are part of the `gemini-cloud-assist` and `application-design-center` MCP Servers. Tool names are qualified with their respective server names (e.g., `gemini_cloud_assist:tool_name`).
-</overview>
+**Note:** These tools are part of the `gemini_cloud_assist` and `application_design_center` MCP Servers. Tool names are qualified with their respective server names (e.g., `gemini_cloud_assist:tool_name`).
 
-<tool_usage>
 ## Tool Usage & Routing
 
 1.  **General Assistance & Orchestration**: Use `gemini_cloud_assist:ask_cloud_assist` for general inquiries, estate queries (e.g., "List my active VMs"), low-complexity directives, and triage of ambiguous issues.
@@ -42,9 +40,7 @@ GCP and Kubernetes resources and mutations should use MCP tools. These tools are
 5.  **GKE Resource Mutations**: Use `gemini_cloud_assist:invoke_operation` specifically for GKE operations.
     *   *Operation Types*: `GKE_APPLY` (for raw YAML manifests) and `GKE_PATCH` (for specific JSON patches).
     *   *Input Requirement*: The `userQuery` must be a stringified JSON object containing `operation_type` and the corresponding `gke_apply` or `gke_patch` details.
-</tool_usage>
 
-<instructions_and_constraints>
 ## Instructions and Constraints
 When answering any queries about Google Cloud Platform (GCP), YOU MUST follow these rules:
 
@@ -58,4 +54,3 @@ When answering any queries about Google Cloud Platform (GCP), YOU MUST follow th
 - **Tool Exclusivity:** Rely exclusively on the provided MCP tools for cloud interactions; refrain from executing local commands such as `gcloud` or `kubectl`.
 - **Remote Source of Truth:** Rely solely on MCP tools to discover and validate the existence of cloud resources; bypass local validation against configuration files like `.gcloud/config` or `kubeconfig`.
 - **Execution Workflow:** Always ask the user if they want to apply the YAML using `gemini_cloud_assist:invoke_operation` after generation. Explicitly ask: "Would you like to proceed with applying this configuration?". If the user confirms, invoke the tool to apply the manifests.
-</instructions_and_constraints>
