@@ -14,7 +14,7 @@
 [![npm @google-cloud/gemini-cloud-assist-mcp package](https://img.shields.io/npm/v/@google-cloud/gemini-cloud-assist-mcp.svg)](https://www.npmjs.com/package/@google-cloud/gemini-cloud-assist-mcp)
 [![](https://img.shields.io/github/license/GoogleCloudPlatform/gemini-cloud-assist-mcp)](./LICENSE)
 
-This server connects [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) clients such as the [Gemini CLI](https://github.com/google-gemini/gemini-cli) to the [**Gemini Cloud Assist APIs**](https://cloud.google.com/gemini/docs/api-and-reference). It allows you to use natural language to understand, manage, and troubleshoot your Google Cloud environment directly from the local command line.
+This server connects [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) clients to the [**Gemini Cloud Assist APIs**](https://cloud.google.com/gemini/docs/api-and-reference). It allows you to use natural language to understand, manage, and troubleshoot your Google Cloud environment directly from the local command line.
 
 > [!NOTE]
 > The **Google Cloud Platform Terms of Service** (available at https://cloud.google.com/terms/) and the **Data Processing and Security Terms** (available at https://cloud.google.com/terms/data-processing-terms) do not apply to any component of the Gemini Cloud Assist MCP Server software.
@@ -54,37 +54,6 @@ gcloud auth application-default login
 ## Configure your MCP client
 
 The client-agent configuration depends on which agent you are using.
-
-### Gemini CLI
-
-Install the MCP server as a [Gemini CLI extension](https://github.com/google-gemini/gemini-cli/blob/main/docs/extension.md):
-
-```shell
-gemini extensions install https://github.com/GoogleCloudPlatform/gemini-cloud-assist-mcp
-```
-
-Alternatively, you can manually add the configuration to your **_~/.gemini/settings.json_**:
-
-```json
-"mcpServers": {
-  "gemini_cloud_assist": {
-    "httpUrl": "https://geminicloudassist.googleapis.com/mcp",
-    "authProviderType": "google_credentials",
-    "oauth": {
-      "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
-    },
-    "timeout": 600000
-  },
-  "application_design_center": {
-    "httpUrl": "https://designcenter.googleapis.com/mcp",
-    "authProviderType": "google_credentials",
-    "oauth": {
-      "scopes": ["https://www.googleapis.com/auth/cloud-platform"]
-    },
-    "timeout": 600000
-  }
-}
-```
 
 ### Antigravity
 
